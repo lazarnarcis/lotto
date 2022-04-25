@@ -19,7 +19,7 @@ for (let i = 1; i <= elements; i++) {
                 numbers.push(i);
                 console.log(numbers);
             } else {
-                alert('you can choose max 6 elements');
+                alert('you can choose max 6 numbers');
             }
         } else {
             element.style.background = "green";
@@ -32,5 +32,7 @@ for (let i = 1; i <= elements; i++) {
 }
 
 function bet () {
-    alert(numbers);
+    if (numbers.length != 6) {
+        alert('you need to select 6 numbers! please')
+    }
 }
