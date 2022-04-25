@@ -33,6 +33,8 @@ for (let i = 1; i <= elements; i++) {
 
 function bet () {
     if (numbers.length != 6) {
-        alert('you need to select 6 numbers! please')
+        alert('you need to select 6 numbers! please');
+    } else {
+        alert(numbers);
     }
 }
