@@ -6,6 +6,7 @@ let numbers = localStorage.getItem("numbers") || [];
 
 //set lotto type
 lotto_type.innerHTML = "Lotto 6/49";
+if (numbers.length != 0) numbers = JSON.parse(numbers);
 
 function makeNumbers () {
     for (let i = 1; i <= elements; i++) {
@@ -19,10 +20,10 @@ function makeNumbers () {
         element.addEventListener("click", () => {
             if (element.style.background != "red") {
                 if (maxElements < 6) {
-                    meelent.style.background = "red";
+                    element.style.background = "red";
                     maxElements++;
-                    numbers = [...numbers, finalNumbers];
-                    localStorage.setItem("numbers", numbers);
+                    numbers = [...numbers, finalNumber];
+                    localStorage.setItem("numbers", JSON.stringify(numbers));
                     console.log(numbers);
                 } else {
                     alert('you can choose max 6 numbers');
@@ -31,7 +32,7 @@ function makeNumbers () {
                 element.style.background = "green";
                 maxElements--;
                 numbers.splice(numbers.indexOf(i), 1);
-                localStorage.setItem("numbers", numbers);
+                localStorage.setItem("numbers", JSON.stringify(numbers));
                 console.log(numbers);
             }
         });
