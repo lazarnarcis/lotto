@@ -1,7 +1,7 @@
 let lotto6 = document.querySelector("#lotto6-49"); //lotto 6/49 div
 let elements = 49;
 let lotto_type = document.querySelector("#lotto_type");
-let maxElements = 0;
+let maxElements = localStorage.getItem("maxElements") || 0;
 let numbers = localStorage.getItem("numbers") || [];
 
 //set lotto type
@@ -13,15 +13,14 @@ function makeNumbers () {
         let element = document.createElement("div");
         element.id = "element";
         element.innerHTML = i;
-        let finalNumber = {
-            number: i,
-            selected: false
-        };
+        let finalNumber = i;
+        element.style.background = numbers.indexOf(i) !== -1 ? "red" : "green";
         element.addEventListener("click", () => {
             if (element.style.background != "red") {
                 if (maxElements < 6) {
                     element.style.background = "red";
                     maxElements++;
+                    localStorage.setItem("maxElements", maxElements);
                     numbers = [...numbers, finalNumber];
                     localStorage.setItem("numbers", JSON.stringify(numbers));
                     console.log(numbers);
@@ -31,6 +30,7 @@ function makeNumbers () {
             } else {
                 element.style.background = "green";
                 maxElements--;
+                localStorage.setItem("maxElements", maxElements);
                 numbers.splice(numbers.indexOf(i), 1);
                 localStorage.setItem("numbers", JSON.stringify(numbers));
                 console.log(numbers);
