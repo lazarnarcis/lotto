@@ -21,6 +21,7 @@ function makeNumbers () {
                     maxElements++;
                     localStorage.setItem("maxElements", maxElements);
                     numbers = [...numbers, i];
+                    numbers.sort((a, b) => {return a-b;}); // sort numbers in ascending order
                     localStorage.setItem("numbers", JSON.stringify(numbers));
                     console.log(numbers);
                 } else {
@@ -31,6 +32,7 @@ function makeNumbers () {
                 maxElements--;
                 localStorage.setItem("maxElements", maxElements);
                 numbers.splice(numbers.indexOf(i), 1);
+                numbers.sort((a, b) => {return a-b;}); // sort numbers in ascending order
                 localStorage.setItem("numbers", JSON.stringify(numbers));
                 console.log(numbers);
             }
