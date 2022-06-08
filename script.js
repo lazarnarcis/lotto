@@ -13,7 +13,6 @@ function makeNumbers () {
         let element = document.createElement("div");
         element.id = "element";
         element.innerHTML = i;
-        let finalNumber = i;
         element.style.background = numbers.indexOf(i) !== -1 ? "red" : "green";
         element.addEventListener("click", () => {
             if (element.style.background != "red") {
@@ -21,7 +20,7 @@ function makeNumbers () {
                     element.style.background = "red";
                     maxElements++;
                     localStorage.setItem("maxElements", maxElements);
-                    numbers = [...numbers, finalNumber];
+                    numbers = [...numbers, i];
                     localStorage.setItem("numbers", JSON.stringify(numbers));
                     console.log(numbers);
                 } else {
